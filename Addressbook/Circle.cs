@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Addressbook
+namespace addressbook_web_tests
 {
     class Circle
+
     {
         private int radius;
 
@@ -26,5 +27,6 @@ namespace Addressbook
                 radius = value;
             }
         }
+       
     }
 }

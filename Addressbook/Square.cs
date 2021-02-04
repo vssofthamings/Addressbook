@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Addressbook
+namespace addressbook_web_tests
 {
     class Square
     {
         private int size;
+        private bool colored = false;
 
         public Square(int size)
         {
@@ -24,6 +25,17 @@ namespace Addressbook
             set
             {
                 size = value;
+            }
+        }
+        public bool Colored
+        {
+            get
+            {
+                return colored;
+            }
+            set
+            {
+                colored = value;
             }
         }
 
