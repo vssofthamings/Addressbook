@@ -45,7 +45,28 @@ namespace WebAddressbookTests
             OpenHomePage();
             Login(new AccountData("admin", "secret"));
             GoToCreateNewContact();
-            FillContactForm();
+            ContactsData contacts = new ContactsData();
+            contacts.Firstname = "qwe123";
+            contacts.Middlename = "qwe123";
+            contacts.Lastname = "qwe123";
+            contacts.Nickname = "qwe123";
+            contacts.Title = "qwe123";
+            contacts.Company = "qwe123";
+            contacts.Address = "qwe123";
+            contacts.Home = "qwe123";
+            contacts.Mobile = "qwe123";
+            contacts.Work = "qwe123";
+            contacts.Fax = "qwe123";
+            contacts.Email = "qwe123";
+            contacts.Email2 = "qwe123";
+            contacts.Email3 = "qwe123";
+            contacts.Homepage = "qwe123";
+            contacts.Byear = "1999";
+            contacts.Ayear = "2099";
+            contacts.Address2 = "qwe123";
+            contacts.Phone2 = "qwe123";
+            contacts.Notes = "qwe123";
+            FillContactForm(contacts);
             SubmitContactCreation();
             ReturnToHomePage();
             Logout();
@@ -66,32 +87,32 @@ namespace WebAddressbookTests
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
         }
 
-        private void FillContactForm()
+        private void FillContactForm(ContactsData contacts)
         {
-            driver.FindElement(By.Name("firstname")).SendKeys("a");
-            driver.FindElement(By.Name("middlename")).SendKeys("s");
-            driver.FindElement(By.Name("lastname")).SendKeys("d");
-            driver.FindElement(By.Name("nickname")).SendKeys("qq");
-            driver.FindElement(By.Name("title")).SendKeys("w");
-            driver.FindElement(By.Name("company")).SendKeys("e");
-            driver.FindElement(By.Name("address")).SendKeys("d1");
-            driver.FindElement(By.Name("home")).SendKeys("1d");
-            driver.FindElement(By.Name("mobile")).SendKeys("123234");
-            driver.FindElement(By.Name("work")).SendKeys("qwe123");
-            driver.FindElement(By.Name("fax")).SendKeys("123qwe");
-            driver.FindElement(By.Name("email")).SendKeys("qwe123");
-            driver.FindElement(By.Name("email2")).SendKeys("qwe234");
-            driver.FindElement(By.Name("email3")).SendKeys("qwe345");
-            driver.FindElement(By.Name("homepage")).SendKeys("qqq22www");
+            driver.FindElement(By.Name("firstname")).SendKeys(contacts.Firstname);
+            driver.FindElement(By.Name("middlename")).SendKeys(contacts.Middlename);
+            driver.FindElement(By.Name("lastname")).SendKeys(contacts.Lastname);
+            driver.FindElement(By.Name("nickname")).SendKeys(contacts.Nickname);
+            driver.FindElement(By.Name("title")).SendKeys(contacts.Title);
+            driver.FindElement(By.Name("company")).SendKeys(contacts.Company);
+            driver.FindElement(By.Name("address")).SendKeys(contacts.Address);
+            driver.FindElement(By.Name("home")).SendKeys(contacts.Home);
+            driver.FindElement(By.Name("mobile")).SendKeys(contacts.Mobile);
+            driver.FindElement(By.Name("work")).SendKeys(contacts.Work);
+            driver.FindElement(By.Name("fax")).SendKeys(contacts.Fax);
+            driver.FindElement(By.Name("email")).SendKeys(contacts.Email);
+            driver.FindElement(By.Name("email2")).SendKeys(contacts.Email2);
+            driver.FindElement(By.Name("email3")).SendKeys(contacts.Email3);
+            driver.FindElement(By.Name("homepage")).SendKeys(contacts.Homepage);
             new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText("1");
             new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText("March");
-            driver.FindElement(By.Name("byear")).SendKeys("1999");
+            driver.FindElement(By.Name("byear")).SendKeys(contacts.Byear);
             new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText("1");
             new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText("May");
-            driver.FindElement(By.Name("ayear")).SendKeys("2999");
-            driver.FindElement(By.Name("address2")).SendKeys("red");
-            driver.FindElement(By.Name("phone2")).SendKeys("88");
-            driver.FindElement(By.Name("notes")).SendKeys("rrreeedfdd");
+            driver.FindElement(By.Name("ayear")).SendKeys(contacts.Ayear);
+            driver.FindElement(By.Name("address2")).SendKeys(contacts.Address2);
+            driver.FindElement(By.Name("phone2")).SendKeys(contacts.Phone2);
+            driver.FindElement(By.Name("notes")).SendKeys(contacts.Notes);
         }
 
         private void GoToCreateNewContact()
