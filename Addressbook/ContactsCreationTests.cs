@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ConactsCreationTests
+    public class ContactsCreationTests
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -45,6 +45,29 @@ namespace WebAddressbookTests
             OpenHomePage();
             Login(new AccountData("admin", "secret"));
             GoToCreateNewContact();
+            FillContactForm();
+            SubmitContactCreation();
+            ReturnToHomePage();
+            Logout();
+        }
+
+        private void Logout()
+        {
+            driver.FindElement(By.LinkText("Logout")).Click();
+        }
+
+        private void ReturnToHomePage()
+        {
+            driver.FindElement(By.LinkText("home page")).Click();
+        }
+
+        private void SubmitContactCreation()
+        {
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+        }
+
+        private void FillContactForm()
+        {
             driver.FindElement(By.Name("firstname")).SendKeys("a");
             driver.FindElement(By.Name("middlename")).SendKeys("s");
             driver.FindElement(By.Name("lastname")).SendKeys("d");
@@ -69,10 +92,6 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("address2")).SendKeys("red");
             driver.FindElement(By.Name("phone2")).SendKeys("88");
             driver.FindElement(By.Name("notes")).SendKeys("rrreeedfdd");
-            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
-            driver.FindElement(By.LinkText("home page")).Click();
-            driver.FindElement(By.XPath("//html")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
         }
 
         private void GoToCreateNewContact()
@@ -82,9 +101,7 @@ namespace WebAddressbookTests
 
         private void Login(AccountData account)
         {
-            driver.FindElement(By.Name("user")).Clear();
             driver.FindElement(By.Name("user")).SendKeys("admin");
-            driver.FindElement(By.Name("pass")).Clear();
             driver.FindElement(By.Name("pass")).SendKeys("secret");
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }

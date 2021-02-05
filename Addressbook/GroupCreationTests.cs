@@ -52,12 +52,17 @@ namespace WebAddressbookTests
             FillGroupForm(group);
             SubmitGroupCreation();
             ReturnToGroupsPage();
+            Logout();
+        }
+
+        private void Logout()
+        {
+            driver.FindElement(By.LinkText("Logout")).Click();
         }
 
         private void ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
         }
 
         private void SubmitGroupCreation()
@@ -92,9 +97,7 @@ namespace WebAddressbookTests
         private void LoginAsUser()
         {
             driver.FindElement(By.Name("user")).SendKeys("user");
-            driver.FindElement(By.XPath("//body")).Click();
             driver.FindElement(By.Name("pass")).SendKeys("qwerty");
-            driver.FindElement(By.XPath("//body")).Click();
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
 
