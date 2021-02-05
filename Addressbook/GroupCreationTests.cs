@@ -67,11 +67,8 @@ namespace WebAddressbookTests
 
         private void FillGroupForm(GroupData group)
         {
-            driver.FindElement(By.Name("group_name")).Clear();
             driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            driver.FindElement(By.Name("group_header")).Clear();
             driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            driver.FindElement(By.Name("group_footer")).Clear();
             driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
         }
 
@@ -87,22 +84,15 @@ namespace WebAddressbookTests
 
         private void Login(AccountData account)
         {
-            driver.FindElement(By.Name("user")).Clear();
             driver.FindElement(By.Name("user")).SendKeys(account.Username);
-            driver.FindElement(By.XPath("//body")).Click();
-            driver.FindElement(By.Name("pass")).Clear();
             driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
 
         private void LoginAsUser()
         {
-            driver.FindElement(By.Name("user")).Click();
-            driver.FindElement(By.Name("user")).Clear();
             driver.FindElement(By.Name("user")).SendKeys("user");
             driver.FindElement(By.XPath("//body")).Click();
-            driver.FindElement(By.Name("pass")).Click();
-            driver.FindElement(By.Name("pass")).Clear();
             driver.FindElement(By.Name("pass")).SendKeys("qwerty");
             driver.FindElement(By.XPath("//body")).Click();
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
