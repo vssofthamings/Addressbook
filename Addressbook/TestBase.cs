@@ -16,12 +16,20 @@ namespace WebAddressbookTests
         private StringBuilder verificationErrors;
         protected string baseURL;
 
+        protected LoginHelper loginHelper;
+        protected NavigationHelper navigator;
+        protected GroupHelper groupHelper;
+
         [SetUp]
         public void SetupTest()
         {
             driver = new ChromeDriver();
-            baseURL = "http://localhost/addressbook";
+            baseURL = "http://localhost";
             verificationErrors = new StringBuilder();
+
+            loginHelper = new LoginHelper(driver);
+            navigator = new NavigationHelper(driver, baseURL);
+            groupHelper = new GroupHelper(driver);
         }
 
         [TearDown]
@@ -37,64 +45,24 @@ namespace WebAddressbookTests
             }
             Assert.AreEqual("", verificationErrors.ToString());
         }
-        protected void GoToHomePage()
-        {
-            driver.Navigate().GoToUrl(baseURL);
-        }
 
-        protected void Login(AccountData account)
+        //Возврат на главную
+        protected void ReturnToHomePage()
         {
-            driver.FindElement(By.Name("user")).SendKeys(account.Username);
-            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
-            driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+            driver.FindElement(By.LinkText("home")).Click();
         }
-
-        protected void GoTogroupsPage()
-        {
-            driver.FindElement(By.LinkText("groups")).Click();
-        }
-        protected void FillGroupForm(GroupData group)
-        {
-            driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
-        }
-
-        protected void InitGroupCreation()
-        {
-            driver.FindElement(By.Name("new")).Click();
-        }
-        protected void SubmitGroupCreation()
-        {
-            driver.FindElement(By.Name("submit")).Click();
-        }
-        protected void ReturnToGroupsPage()
-        {
-            driver.FindElement(By.LinkText("group page")).Click();
-        }
+        //Выход
         protected void Logout()
         {
             driver.FindElement(By.LinkText("Logout")).Click();
         }
-
-        protected void SelectGroup(int index)
-        {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
-        }
-
-        protected void RemoveGroup()
-        {
-            driver.FindElement(By.Name("delete")).Click();
-        }
+  
+        //Контакт. Создать контакт
         protected void GoToCreateNewContact()
         {
             driver.FindElement(By.LinkText("add new")).Click();
         }
-        protected void ReturnToHomePage()
-        {
-            driver.FindElement(By.LinkText("home page")).Click();
-        }
-
+        //Контакт. Заполнить контакт
         protected void FillContactForm(ContactsData contacts)
         {
             driver.FindElement(By.Name("firstname")).SendKeys(contacts.Firstname);
@@ -122,6 +90,7 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("phone2")).SendKeys(contacts.Phone2);
             driver.FindElement(By.Name("notes")).SendKeys(contacts.Notes);
         }
+        //Контакт. Подтвердить создание контанкта
         protected void SubmitContactCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();

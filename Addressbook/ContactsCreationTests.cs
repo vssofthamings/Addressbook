@@ -13,8 +13,8 @@ namespace WebAddressbookTests
         [Test]
         public void TheUntitledTestCaseTest()
         {
-            GoToHomePage();
-            Login(new AccountData("admin", "secret"));
+            navigator.GoToHomePage();
+            loginHelper.Login(new AccountData("admin", "secret"));
             GoToCreateNewContact();
             ContactsData contacts = new ContactsData();
             contacts.Firstname = "AAA";
