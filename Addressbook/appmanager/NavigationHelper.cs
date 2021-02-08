@@ -29,6 +29,10 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.LinkText("groups")).Click();
         }
-
+        //Контакт. Создать контакт
+        public void GoToCreateNewContact()
+        {
+            driver.FindElement(By.LinkText("add new")).Click();
+        }
     }
 }

@@ -18,18 +18,13 @@ namespace WebAddressbookTests
 
         public ContactHelper CreateContact(ContactsData contacts)
         {
-            GoToCreateNewContact();
+            manager.Navigator.GoToCreateNewContact();
             FillContactForm(contacts);
             SubmitContactCreation();
             ReturnToHomePage();
             return this;
         }
-        //Контакт. Создать контакт
-        public ContactHelper GoToCreateNewContact()
-        {
-            driver.FindElement(By.LinkText("add new")).Click();
-            return this;
-        }
+
         //Контакт. Заполнить контакт
         public ContactHelper FillContactForm(ContactsData contacts)
         {
