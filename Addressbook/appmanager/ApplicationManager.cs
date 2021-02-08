@@ -22,6 +22,7 @@ namespace WebAddressbookTests
         public ApplicationManager()
         {
             driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
             baseURL = "http://localhost";
 
             loginHelper = new LoginHelper(this);
