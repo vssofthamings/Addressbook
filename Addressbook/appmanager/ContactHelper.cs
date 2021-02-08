@@ -16,6 +16,10 @@ namespace WebAddressbookTests
         {
         }
 
+        internal void Modify(int v, ContactsData newData)
+        {
+            
+        }
         public ContactHelper CreateContact(ContactsData contacts)
         {
             manager.Navigator.GoToCreateNewContact();
@@ -54,6 +58,9 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("notes")).SendKeys(contacts.Notes);
             return this;
         }
+
+
+
         //Контакт. Подтвердить создание контанкта
         public ContactHelper SubmitContactCreation()
         {
