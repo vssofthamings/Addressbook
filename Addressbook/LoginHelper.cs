@@ -9,13 +9,11 @@ using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
-    public class LoginHelper
+    public class LoginHelper : HelperBase
     {
-        private IWebDriver driver;
-
         public LoginHelper(IWebDriver driver)
+            :base(driver)
         {
-            this.driver = driver;
         }
         //Логин
         public void Login(AccountData account)
@@ -24,5 +22,11 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
+        //Выход
+        public void Logout()
+        {
+            driver.FindElement(By.LinkText("Logout")).Click();
+        }
+
     }
 }

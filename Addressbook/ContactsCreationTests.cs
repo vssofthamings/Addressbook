@@ -15,7 +15,7 @@ namespace WebAddressbookTests
         {
             navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
-            GoToCreateNewContact();
+            contactHelper.GoToCreateNewContact();
             ContactsData contacts = new ContactsData();
             contacts.Firstname = "AAA";
             contacts.Middlename = "BBB";
@@ -37,10 +37,10 @@ namespace WebAddressbookTests
             contacts.Address2 = "qwe123";
             contacts.Phone2 = "qwe123";
             contacts.Notes = "qwe123";
-            FillContactForm(contacts);
-            SubmitContactCreation();
-            ReturnToHomePage();
-            Logout();
+            contactHelper.FillContactForm(contacts);
+            contactHelper.SubmitContactCreation();
+            contactHelper.ReturnToHomePage();
+            loginHelper.Logout();
         }
 
 
