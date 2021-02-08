@@ -11,17 +11,27 @@ namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
     {
-      public ContactHelper(IWebDriver driver)
-    : base(driver)
+      public ContactHelper(ApplicationManager manager)
+            : base(manager)
         {
+        }
+
+        public ContactHelper CreateContact(ContactsData contacts)
+        {
+            GoToCreateNewContact();
+            FillContactForm(contacts);
+            SubmitContactCreation();
+            ReturnToHomePage();
+            return this;
         }
         //Контакт. Создать контакт
-        public void GoToCreateNewContact()
+        public ContactHelper GoToCreateNewContact()
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
         }
         //Контакт. Заполнить контакт
-        public void FillContactForm(ContactsData contacts)
+        public ContactHelper FillContactForm(ContactsData contacts)
         {
             driver.FindElement(By.Name("firstname")).SendKeys(contacts.Firstname);
             driver.FindElement(By.Name("middlename")).SendKeys(contacts.Middlename);
@@ -47,16 +57,19 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("address2")).SendKeys(contacts.Address2);
             driver.FindElement(By.Name("phone2")).SendKeys(contacts.Phone2);
             driver.FindElement(By.Name("notes")).SendKeys(contacts.Notes);
+            return this;
         }
         //Контакт. Подтвердить создание контанкта
-        public void SubmitContactCreation()
+        public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            return this;
         }
         //Возврат на главную
-        public void ReturnToHomePage()
+        public ContactHelper ReturnToHomePage()
         {
             driver.FindElement(By.LinkText("home")).Click();
+            return this;
         }
     }
 }
