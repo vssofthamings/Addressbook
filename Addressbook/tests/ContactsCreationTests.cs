@@ -35,7 +35,7 @@ namespace WebAddressbookTests
             contacts.Phone2 = "qwe123";
             contacts.Notes = "qwe123";
 
-            app.Contacts.CreateContact(contacts);
+            app.Contacts.Create(contacts);
             app.Auth.Logout();
         }
 

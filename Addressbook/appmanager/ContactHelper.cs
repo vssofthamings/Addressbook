@@ -16,19 +16,34 @@ namespace WebAddressbookTests
         {
         }
 
-        internal void Modify(int v, ContactsData newData)
+
+        public ContactHelper Create(ContactsData contacts)
         {
-            
-        }
-        public ContactHelper CreateContact(ContactsData contacts)
-        {
-            manager.Navigator.GoToCreateNewContact();
+            manager.Navigator.GoToStartPage();
+            GoToCreateNewContact();
             FillContactForm(contacts);
             SubmitContactCreation();
             ReturnToHomePage();
             return this;
         }
 
+        internal void Modify(int v, ContactsData newData)
+        {
+            manager.Navigator.GoToStartPage();
+            SelectContact(v);
+        }
+
+        internal void Remove(int v)
+        {
+            manager.Navigator.GoToStartPage();
+            //in progress
+        }
+
+        //Контакт. Создать контакт
+        public void GoToCreateNewContact()
+        {
+            driver.FindElement(By.LinkText("add new")).Click();
+        }
         //Контакт. Заполнить контакт
         public ContactHelper FillContactForm(ContactsData contacts)
         {
@@ -59,8 +74,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-
-
         //Контакт. Подтвердить создание контанкта
         public ContactHelper SubmitContactCreation()
         {
@@ -71,6 +84,12 @@ namespace WebAddressbookTests
         public ContactHelper ReturnToHomePage()
         {
             driver.FindElement(By.LinkText("home")).Click();
+            return this;
+        }
+        //Редактирование контактов. Выбор контактов
+        public ContactHelper SelectContact(int index)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
             return this;
         }
     }

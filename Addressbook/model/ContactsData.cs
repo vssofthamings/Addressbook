@@ -8,27 +8,6 @@ namespace WebAddressbookTests
 {
     public class ContactsData
     {
-        /*private string firstname = "";
-        private string middlename = "";
-        private string lastname = "";
-        private string nickname = "";
-        private string title = "";
-        private string company = "";
-        private string address = "";
-        private string home = "";
-        private string mobile = "";
-        private string work = "";
-        private string fax = "";
-        private string email = "";
-        private string email2 = "";
-        private string email3 = "";
-        private string homepage = "";
-        private string byear = "";
-        private string ayear = "";
-        private string address2 = "";
-        private string phone2 = "";
-        private string notes = "";*/
-
         public string Firstname { get; set; }
         public string Middlename { get; set; }
         public string Lastname { get; set; }
