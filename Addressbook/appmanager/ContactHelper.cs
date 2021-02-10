@@ -27,17 +27,28 @@ namespace WebAddressbookTests
             return this;
         }
 
-        internal void Modify(int v, ContactsData newData)
+        public ContactHelper Modify(int v, ContactsData newData)
         {
             manager.Navigator.GoToStartPage();
             SelectContact(v);
+            InitContactsModification();
+            FillContactForm(newData);
+            SubmitContactModification();
+            ReturnToHomePage();
+            return this;
         }
 
-        internal void Remove(int v)
+
+        public ContactHelper Remove(int v)
         {
             manager.Navigator.GoToStartPage();
-            //in progress
+            SelectContact(v);
+            RemoveContact();
+            SubmitRemovalContact();
+            ReturnToHomePage();
+            return this;
         }
+
 
         //Контакт. Создать контакт
         public void GoToCreateNewContact()
@@ -86,10 +97,34 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("home")).Click();
             return this;
         }
-        //Редактирование контактов. Выбор контактов
+        //Редактирование контактов. Выбор контакта
         public ContactHelper SelectContact(int index)
         {
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            return this;
+        }
+        //Редактирование контактов. Клик изменить
+        public ContactHelper InitContactsModification()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            return this;
+        }
+        //Редактирование контактов. Подтвердить изменения
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+        //Удаление группы
+        public ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitRemovalContact()
+        {
+            //in progress
             return this;
         }
     }
