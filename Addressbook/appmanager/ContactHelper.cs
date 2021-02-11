@@ -124,7 +124,7 @@ namespace WebAddressbookTests
 
         public ContactHelper SubmitRemovalContact()
         {
-            //in progress
+            driver.SwitchTo().Alert().Accept();
             return this;
         }
     }
