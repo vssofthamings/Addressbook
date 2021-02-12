@@ -1,29 +1,27 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-
+//где-то тут ошибка. Использую OneTimeSetUp вместо SetUp и OneTimeTearDown аналогично
 namespace WebAddressbookTests
 {
     [SetUpFixture]
     public class TestSuiteFixture
     {
-        public static ApplicationManager app;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void InitApplicationManager()
         {
-            app = new ApplicationManager();
+            ApplicationManager app = new ApplicationManager.GetInstance();
             app.Navigator.GoToHomePage();
             app.Auth.Login(new AccountData("admin", "secret"));
         } 
-        [TearDown]
+       /* [OneTimeTearDown]
         public void StopApplicationManager()
         {
-            app.Stop();
-        }
+            ApplicationManager.GetInstance().Stop();
+        }*/
     }
 }
-*/

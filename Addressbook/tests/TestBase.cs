@@ -14,15 +14,17 @@ namespace WebAddressbookTests
         [SetUp]
         public void SetupTest()
         {
-            app = new ApplicationManager();
-            app.Navigator.GoToHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
+            //это добавил вместо след. Остальные просто раскомментить
+            app = ApplicationManager.GetInstance();
+            //app = new ApplicationManager();
+            //app.Navigator.GoToHomePage();
+            //app.Auth.Login(new AccountData("admin", "secret"));
         }
 
-        [TearDown]
+/*        [TearDown]
         public void TeardownTest()
         {
-            app.Stop();
-        }
+            //app.Stop();
+        }*/
     }
 }
