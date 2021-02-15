@@ -61,7 +61,7 @@ namespace WebAddressbookTests
             Type(By.Name("firstname"), contacts.Firstname);
             Type(By.Name("middlename"), contacts.Middlename);
             Type(By.Name("lastname"), contacts.Lastname);
-            /*Type(By.Name("group_name"), contacts.Nickname);
+            Type(By.Name("nickname"), contacts.Nickname);
             Type(By.Name("title"), contacts.Title);
             Type(By.Name("company"), contacts.Company);
             Type(By.Name("address"), contacts.Address);
@@ -81,7 +81,7 @@ namespace WebAddressbookTests
             Type(By.Name("ayear"), contacts.Ayear);
             Type(By.Name("address2"), contacts.Address2);
             Type(By.Name("phone2"), contacts.Phone2);
-            Type(By.Name("notes"), contacts.Notes);*/
+            Type(By.Name("notes"), contacts.Notes);
             return this;
         }
 

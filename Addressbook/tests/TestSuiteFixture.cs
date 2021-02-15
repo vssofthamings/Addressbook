@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         [OneTimeSetUp]
         public void InitApplicationManager()
         {
-            ApplicationManager app = new ApplicationManager.GetInstance();
+            ApplicationManager app = ApplicationManager.GetInstance();
             app.Navigator.GoToHomePage();
             app.Auth.Login(new AccountData("admin", "secret"));
         } 
