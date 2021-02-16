@@ -31,10 +31,13 @@ namespace WebAddressbookTests
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
 
-        //Выход
+        //Выход. Сначала проверяется не залогинен ли уже и потом выполняется выход
         public void Logout()
         {
-            driver.FindElement(By.LinkText("Logout")).Click();
+            if (IsLoggedIn())
+            {
+                driver.FindElement(By.LinkText("Logout")).Click();
+            }
         }
         //Проверка наличия кнопки logout
         public bool IsLoggedIn()

@@ -11,7 +11,7 @@ namespace WebAddressbookTests
     {
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void ContactsCreationTest()
         {
             ContactsData contacts = new ContactsData();
             contacts.Firstname = "AAA";
