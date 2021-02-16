@@ -18,21 +18,35 @@ namespace WebAddressbookTests
         {
             this.baseURL = baseURL;
         }
-        //Открытие домашней старницы
+        //Открытие домашней старницы. + Предварительная проверка, что уже не там
         public void GoToHomePage()
         {
+            if (driver.Url == baseURL + "/addressbook")
+            {
+                return;
+            }
             driver.Navigate().GoToUrl(baseURL + "/addressbook");
         }
 
-        //Переход в группы
+        //Переход в группы + Предварительная проверка, что уже не там
         public void GoTogroupsPage()
         {
+            if (driver.Url == baseURL + "/addressbook/edit.php"
+                && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("groups")).Click();
         }
         //Страница Home
         public void GoToStartPage()
         {
-            driver.FindElement(By.LinkText("home")).Click();
+            if (driver.Url == baseURL + "/addressbook"
+                && IsElementPresent(By.Name("home")))
+            {
+                return;
+            }
+                driver.FindElement(By.LinkText("home")).Click();
         }
     }
 }
