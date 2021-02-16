@@ -27,6 +27,20 @@ namespace WebAddressbookTests
             return this;
         }
 
+
+        public List<ContactsData> GetContactList()
+        {
+            List<ContactsData> contacts = new List<ContactsData>();
+            manager.Navigator.GoToStartPage();
+            //Подсчет списка всех элементов "контакт". Ищем по тегу tr + название odd
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.odd"));
+            foreach (IWebElement element in elements)
+            {
+                contacts.Add(new ContactsData(element.Text));
+            }
+            return contacts;
+        }
+
         public ContactHelper Modify(int v, ContactsData newData)
         {
             manager.Navigator.GoToStartPage();
@@ -48,7 +62,6 @@ namespace WebAddressbookTests
             ReturnToHomePage();
             return this;
         }
-
 
         //Контакт. Создать контакт
         public void GoToCreateNewContact()

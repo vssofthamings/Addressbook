@@ -17,7 +17,7 @@ namespace WebAddressbookTests
             newData.Firstname = "123";
             newData.Middlename = "123";
             newData.Lastname = "qwe";
-            newData.Nickname = "SS";
+            /*newData.Nickname = "SS";
             newData.Title = "qwe123";
             newData.Company = "qwe123";
             newData.Address = "qwe123";
@@ -33,7 +33,7 @@ namespace WebAddressbookTests
             newData.Ayear = "2099";
             newData.Address2 = "qwe123";
             newData.Phone2 = "qwe123";
-            newData.Notes = "qwe123";
+            newData.Notes = "qwe123";*/
 
             app.Contacts.Modify(1, newData);
         }

@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace WebAddressbookTests
@@ -17,7 +18,7 @@ namespace WebAddressbookTests
             contacts.Firstname = "AAA";
             contacts.Middlename = "BBB";
             contacts.Lastname = "CCC";
-            contacts.Nickname = "SS";
+            /*contacts.Nickname = "SS";
             contacts.Title = "qwe123";
             contacts.Company = "qwe123";
             contacts.Address = "qwe123";
@@ -33,12 +34,47 @@ namespace WebAddressbookTests
             contacts.Ayear = "2099";
             contacts.Address2 = "qwe123";
             contacts.Phone2 = "qwe123";
-            contacts.Notes = "qwe123";
+            contacts.Notes = "qwe123";*/
+
+            //Старый список контактов
+            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+
+            app.Contacts.Create(contacts);
+            //app.Auth.Logout();
+
+            //Новый список контактов
+            List<ContactsData> newContacts = app.Contacts.GetContactList();
+            //Сравниваем количество контактов. Старое значение + 1 = новое значение
+            Assert.AreEqual(oldContacts.Count + 1, newContacts.Count);
+        }
+
+        [Test]
+        public void EmptyContactsCreationTest()
+        {
+            ContactsData contacts = new ContactsData();
+            contacts.Firstname = "";
+            contacts.Middlename = "";
+            contacts.Lastname = "";
+            /*contacts.Nickname = "";
+            contacts.Title = "";
+            contacts.Company = "";
+            contacts.Address = "";
+            contacts.Home = "";
+            contacts.Mobile = "";
+            contacts.Work = "";
+            contacts.Fax = "";
+            contacts.Email = "";
+            contacts.Email2 = "";
+            contacts.Email3 = "";
+            contacts.Homepage = "";
+            contacts.Byear = "";
+            contacts.Ayear = "";
+            contacts.Address2 = "";
+            contacts.Phone2 = "";
+            contacts.Notes = "";*/
 
             app.Contacts.Create(contacts);
             //app.Auth.Logout();
         }
-
-
     }
 }
