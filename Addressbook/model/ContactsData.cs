@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
-    public class ContactsData
+    public class ContactsData : IEquatable<ContactsData>
     {
         private string firstname;
         private string middlename = "";
@@ -15,6 +15,30 @@ namespace WebAddressbookTests
         public ContactsData(string firstname)
         {
             this.firstname = firstname;
+        }
+
+        //Сравниваем объекты. Стандартные проверки
+        public bool Equals(ContactsData other)
+        {
+            //Если текущий равен NULL ==> FALSE
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+            //Если две ссылки указывают на один и тот же объект
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            //Проверка по смыслу. Берем имя группы (для контактов взять имя+фамилия)
+            return Firstname == other.Firstname;
+            //return Middlename == other.Middlename;
+        }
+
+        public int GetHashCode()
+        {
+            return Firstname.GetHashCode();
+            //return Middlename.GetHashCode();
         }
 
         public string Firstname

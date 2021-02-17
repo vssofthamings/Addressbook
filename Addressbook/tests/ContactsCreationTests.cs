@@ -71,8 +71,34 @@ namespace WebAddressbookTests
             contacts.Phone2 = "";
             contacts.Notes = "";*/
 
+            //Старый список контактов
+            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+
             app.Contacts.Create(contacts);
             //app.Auth.Logout();
+
+            //Новый список контактов
+            List<ContactsData> newContacts = app.Contacts.GetContactList();
+            //Сравниваем количество контактов. Старое значение + 1 = новое значение
+            Assert.AreEqual(oldContacts.Count + 1, newContacts.Count);
+        }
+        [Test]
+        public void BadNameContactsCreationTest()
+        {
+            ContactsData contacts = new ContactsData("a'a");
+            contacts.Middlename = "";
+            contacts.Lastname = "";
+
+            //Старый список контактов
+            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+
+            app.Contacts.Create(contacts);
+            //app.Auth.Logout();
+
+            //Новый список контактов
+            List<ContactsData> newContacts = app.Contacts.GetContactList();
+            //Сравниваем количество контактов. Старое значение + 1 = новое значение
+            Assert.AreEqual(oldContacts.Count, newContacts.Count);
         }
     }
 }

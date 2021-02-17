@@ -32,8 +32,8 @@ namespace WebAddressbookTests
         {
             List<ContactsData> contacts = new List<ContactsData>();
             manager.Navigator.GoToStartPage();
-            //Подсчет списка всех элементов "контакт". Ищем по тегу tr + название odd
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.odd"));
+            //Подсчет списка всех элементов "контакт". Ищем по имени. Возможно есть вариант получше
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
             foreach (IWebElement element in elements)
             {
                 contacts.Add(new ContactsData(element.Text));
@@ -113,7 +113,7 @@ namespace WebAddressbookTests
         //Редактирование контактов. Выбор контакта
         public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
             return this;
         }
         //Редактирование контактов. Клик изменить
