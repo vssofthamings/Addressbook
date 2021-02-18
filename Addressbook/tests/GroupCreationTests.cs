@@ -22,12 +22,14 @@ namespace WebAddressbookTests
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
             app.Groups.Create(group);
-            //app.Auth.Logout();
 
             //Новый список групп
             List<GroupData> newGroups = app.Groups.GetGroupList();
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
             //Сравниваем количество групп. Старое значение + 1 = новое значение
-            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
+            Assert.AreEqual(oldGroups, newGroups);
         }
 
         [Test]
@@ -45,8 +47,11 @@ namespace WebAddressbookTests
 
             //Новый список групп
             List<GroupData> newGroups = app.Groups.GetGroupList();
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
             //Сравниваем количество групп. Старое значение + 1 = новое значение
-            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
+            Assert.AreEqual(oldGroups, newGroups);
         }
 
         //Создание группы с недопустимым названием. Количество групп не изменилось
@@ -63,6 +68,8 @@ namespace WebAddressbookTests
             //app.Auth.Logout();
 
             List<GroupData> newGroups = app.Groups.GetGroupList();
+            oldGroups.Sort();
+            newGroups.Sort();
             //Сравниваем количество групп. Количество групп не изменилось, поэтому: Старое значение = новое значение
             Assert.AreEqual(oldGroups.Count, newGroups.Count);
         }

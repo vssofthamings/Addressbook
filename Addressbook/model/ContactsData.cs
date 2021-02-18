@@ -74,6 +74,104 @@ namespace WebAddressbookTests
                 lastname = value;
             }
         }
+    }
+}
+
+
+
+
+/*
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WebAddressbookTests
+{
+    public class ContactsData : IEquatable<ContactsData>, IComparable<ContactsData>
+    {
+        private string firstname;
+        private string middlename = "";
+        private string lastname = "";
+
+        public ContactsData(string firstname)
+        {
+            this.firstname = firstname;
+        }
+
+        //Сравниваем объекты. Стандартные проверки
+        public bool Equals(ContactsData other)
+        {
+            //Если текущий равен NULL ==> FALSE
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+            //Если две ссылки указывают на один и тот же объект
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            //Проверка по смыслу. Берем имя группы (для контактов взять имя+фамилия)
+            return Firstname == other.Firstname;
+            //return Middlename == other.Middlename;
+        }
+
+        public override int GetHashCode()
+        {
+            return Firstname.GetHashCode();
+            //return Middlename.GetHashCode();
+        }
+
+        //Возвращает строковое представление объектов типа ContactData
+        public override string ToString()
+        {
+            return "firstname=" + Lastname;
+        }
+
+        public int CompareTo(ContactsData other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+            return Firstname.CompareTo(other.Firstname);
+        }
+
+        public string Firstname
+        {
+            get
+            {
+                return firstname;
+            }
+            set
+            {
+                firstname = value;
+            }
+        }
+        public string Middlename
+        {
+            get
+            {
+                return middlename;
+            }
+            set
+            {
+                middlename = value;
+            }
+        }
+        public string Lastname
+        {
+            get
+            {
+                return lastname;
+            }
+            set
+            {
+                lastname = value;
+            }
+        }
 
        /*
          public string Nickname { get; set; }
@@ -93,7 +191,8 @@ namespace WebAddressbookTests
          public string Address2 { get; set; }
          public string Phone2 { get; set; }
          public string Notes { get; set; }
-       */
+       
     }
     
 }
+*/
