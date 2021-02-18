@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
-    public class ContactsData : IEquatable<ContactsData>
+    public class ContactData : IEquatable<ContactData>
     {
         private string firstname;
         private string middlename = "";
         private string lastname = "";
 
-        public ContactsData(string firstname)
+        public ContactData(string firstname)
         {
             this.firstname = firstname;
         }
 
         //Сравниваем объекты. Стандартные проверки
-        public bool Equals(ContactsData other)
+        public bool Equals(ContactData other)
         {
             //Если текущий равен NULL ==> FALSE
             if (Object.ReferenceEquals(other, null))
@@ -32,14 +32,12 @@ namespace WebAddressbookTests
             }
             //Проверка по смыслу. Берем имя группы (для контактов взять имя+фамилия)
             return Firstname == other.Firstname;
-            //return Middlename == other.Middlename;
         }
 
-        public int GetHashCode()
+        /*public int GetHashCode()
         {
             return Firstname.GetHashCode();
-            //return Middlename.GetHashCode();
-        }
+        }*/
 
         public string Firstname
         {

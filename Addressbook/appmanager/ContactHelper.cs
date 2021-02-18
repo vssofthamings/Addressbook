@@ -17,7 +17,7 @@ namespace WebAddressbookTests
         }
 
 
-        public ContactHelper Create(ContactsData contacts)
+        public ContactHelper Create(ContactData contacts)
         {
             manager.Navigator.GoToStartPage();
             GoToCreateNewContact();
@@ -28,20 +28,20 @@ namespace WebAddressbookTests
         }
 
 
-        public List<ContactsData> GetContactList()
+        public List<ContactData> GetContactList()
         {
-            List<ContactsData> contacts = new List<ContactsData>();
+            List<ContactData> contacts = new List<ContactData>();
             manager.Navigator.GoToStartPage();
             //Подсчет списка всех элементов "контакт". Ищем по имени. Возможно есть вариант получше
             ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
             foreach (IWebElement element in elements)
             {
-                contacts.Add(new ContactsData(element.Text));
+                contacts.Add(new ContactData(element.Text));
             }
             return contacts;
         }
 
-        public ContactHelper Modify(int v, ContactsData newData)
+        public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToStartPage();
             SelectContact(v);
@@ -69,7 +69,7 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("add new")).Click();
         }
         //Контакт. Заполнить контакт
-        public ContactHelper FillContactForm(ContactsData contacts)
+        public ContactHelper FillContactForm(ContactData contacts)
         {
             Type(By.Name("firstname"), contacts.Firstname);
             Type(By.Name("middlename"), contacts.Middlename);

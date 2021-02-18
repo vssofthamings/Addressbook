@@ -15,12 +15,12 @@ namespace WebAddressbookTests
         public void ContactRemovalTest()
         {
             //Старый список контактов
-            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Remove(0);
 
             //Новый список контактов
-              List<ContactsData> newContacts = app.Contacts.GetContactList();
+              List<ContactData> newContacts = app.Contacts.GetContactList();
 
               oldContacts.RemoveAt(0);
               Assert.AreEqual(oldContacts, newContacts);
