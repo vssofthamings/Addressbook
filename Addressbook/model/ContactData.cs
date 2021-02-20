@@ -29,7 +29,7 @@ namespace WebAddressbookTests
                 return true;
             }
             //Проверка по смыслу. Берем имя группы (для контактов взять имя+фамилия)
-            return Firstname == other.Firstname;
+            return Firstname == other.Firstname && Lastname == other.Lastname;
         }
 
         public override int GetHashCode()
