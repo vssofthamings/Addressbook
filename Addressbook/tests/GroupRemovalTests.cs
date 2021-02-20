@@ -19,6 +19,9 @@ namespace WebAddressbookTests
 
             app.Groups.Remove(0);
 
+            //быстро возвращает количество групп
+            Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetGroupCount());
+
             //Новый список групп
             List<GroupData> newGroups = app.Groups.GetGroupList();
 

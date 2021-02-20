@@ -16,7 +16,6 @@ namespace WebAddressbookTests
         {
         }
 
-
         public ContactHelper Create(ContactData contacts)
         {
             manager.Navigator.GoToStartPage();
@@ -27,7 +26,7 @@ namespace WebAddressbookTests
             return this;
         }
 
-
+        //Список контактов
         public List<ContactData> GetContactList()
         {
             List<ContactData> contacts = new List<ContactData>();
@@ -74,27 +73,6 @@ namespace WebAddressbookTests
             Type(By.Name("firstname"), contacts.Firstname);
             Type(By.Name("middlename"), contacts.Middlename);
             Type(By.Name("lastname"), contacts.Lastname);
-            /*Type(By.Name("nickname"), contacts.Nickname);
-            Type(By.Name("title"), contacts.Title);
-            Type(By.Name("company"), contacts.Company);
-            Type(By.Name("address"), contacts.Address);
-            Type(By.Name("home"), contacts.Home);
-            Type(By.Name("mobile"), contacts.Mobile);
-            Type(By.Name("work"), contacts.Work);
-            Type(By.Name("fax"), contacts.Fax);
-            Type(By.Name("email"), contacts.Email);
-            Type(By.Name("email2"), contacts.Email2);
-            Type(By.Name("email3"), contacts.Email3);
-            Type(By.Name("homepage"), contacts.Homepage);
-            new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText("1");
-            new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText("March");
-            Type(By.Name("byear"), contacts.Byear);
-            new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText("1");
-            new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText("May");
-            Type(By.Name("ayear"), contacts.Ayear);
-            Type(By.Name("address2"), contacts.Address2);
-            Type(By.Name("phone2"), contacts.Phone2);
-            Type(By.Name("notes"), contacts.Notes);*/
             return this;
         }
 

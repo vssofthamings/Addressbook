@@ -69,6 +69,7 @@ namespace WebAddressbookTests
     }
 }
 
+
 /*
 using System;
 using System.Text;
@@ -80,71 +81,69 @@ using NUnit.Framework;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactsCreationTests : AuthTestBase
+    public class ContactCreationTests : AuthTestBase
     {
 
         [Test]
         public void ContactsCreationTest()
         {
-            ContactsData contacts = new ContactsData("AAA");
+            ContactData contacts = new ContactData("AAA", "CCC");
             contacts.Middlename = "BBB";
-            contacts.Lastname = "CCC";
 
             //Старый список контактов
-            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Create(contacts);
+            //app.Auth.Logout();
 
             //Новый список контактов
-            List<ContactsData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = app.Contacts.GetContactList();
             oldContacts.Add(contacts);
             oldContacts.Sort();
             newContacts.Sort();
-            //Сравниваем количество контактов. Старое значение + 1 = новое значение
+            //Сравниваем количество контактов
             Assert.AreEqual(oldContacts, newContacts);
         }
 
         [Test]
         public void EmptyContactsCreationTest()
         {
-            ContactsData contacts = new ContactsData("");
+            ContactData contacts = new ContactData("", "");
             contacts.Middlename = "";
-            contacts.Lastname = "";
 
             //Старый список контактов
-            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Create(contacts);
             //app.Auth.Logout();
 
             //Новый список контактов
-            List<ContactsData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = app.Contacts.GetContactList();
             oldContacts.Add(contacts);
             oldContacts.Sort();
             newContacts.Sort();
-            //Сравниваем количество контактов. Старое значение + 1 = новое значение
+            //Сравниваем количество контактов
             Assert.AreEqual(oldContacts, newContacts);
         }
         [Test]
         public void BadNameContactsCreationTest()
         {
-            ContactsData contacts = new ContactsData("a'a");
+            ContactData contacts = new ContactData("a'a", "b'b");
             contacts.Middlename = "";
-            contacts.Lastname = "";
 
             //Старый список контактов
-            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Create(contacts);
             //app.Auth.Logout();
 
             //Новый список контактов
-            List<ContactsData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            oldContacts.Add(contacts);
             oldContacts.Sort();
             newContacts.Sort();
-            //Сравниваем количество контактов. Старое значение + 1 = новое значение
+            //Сравниваем количество контактов
             Assert.AreEqual(oldContacts, newContacts);
         }
     }
-}
-*/
+}*/

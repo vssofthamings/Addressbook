@@ -23,8 +23,7 @@ namespace WebAddressbookTests
 }
 
 
-/*
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,24 +38,22 @@ namespace WebAddressbookTests
         [Test]
         public void ContactModificationTest()
         {
-            ContactsData newData = new ContactsData("123");
+            ContactData newData = new ContactData("123", "qwe");
             newData.Middlename = "123";
-            newData.Lastname = "qwe";
 
-            //Старый список контактов
-            List<ContactsData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Modify(0, newData);
 
             //Новый список контактов
-            List<ContactsData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = app.Contacts.GetContactList();
             oldContacts[0].Firstname = newData.Firstname;
+            oldContacts[0].Lastname = newData.Lastname;
             oldContacts.Sort();
             newContacts.Sort();
-            //Сравниваем количество контактов. Старое значение + 1 = новое значение
+            //Сравниваем количество контактов
             Assert.AreEqual(oldContacts, newContacts);
-
         }
     }
-}
-*/
+}*/
+

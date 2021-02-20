@@ -34,10 +34,10 @@ namespace WebAddressbookTests
             return Firstname == other.Firstname;
         }
 
-        /*public int GetHashCode()
+        public override int GetHashCode()
         {
             return Firstname.GetHashCode();
-        }*/
+        }
 
         public string Firstname
         {
@@ -77,7 +77,6 @@ namespace WebAddressbookTests
 
 
 
-
 /*
 using System;
 using System.Collections.Generic;
@@ -87,19 +86,20 @@ using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
-    public class ContactsData : IEquatable<ContactsData>, IComparable<ContactsData>
+    public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string firstname;
         private string middlename = "";
-        private string lastname = "";
+        private string lastname;
 
-        public ContactsData(string firstname)
+        public ContactData(string firstname, string lastname)
         {
             this.firstname = firstname;
+            this.lastname = lastname;
         }
 
         //Сравниваем объекты. Стандартные проверки
-        public bool Equals(ContactsData other)
+        public bool Equals(ContactData other)
         {
             //Если текущий равен NULL ==> FALSE
             if (Object.ReferenceEquals(other, null))
@@ -112,23 +112,21 @@ namespace WebAddressbookTests
                 return true;
             }
             //Проверка по смыслу. Берем имя группы (для контактов взять имя+фамилия)
+
             return Firstname == other.Firstname;
-            //return Middlename == other.Middlename;
         }
 
         public override int GetHashCode()
         {
             return Firstname.GetHashCode();
-            //return Middlename.GetHashCode();
         }
-
-        //Возвращает строковое представление объектов типа ContactData
+        
         public override string ToString()
         {
-            return "firstname=" + Lastname;
+            return Lastname + Firstname;
         }
 
-        public int CompareTo(ContactsData other)
+        public int CompareTo(ContactData other)
         {
             if (Object.ReferenceEquals(other, null))
             {
@@ -170,27 +168,6 @@ namespace WebAddressbookTests
                 lastname = value;
             }
         }
-
-       /*
-         public string Nickname { get; set; }
-         public string Title { get; set; }
-         public string Company { get; set; }
-         public string Address { get; set; }
-         public string Home { get; set; }
-         public string Mobile { get; set; }
-         public string Work { get; set; }
-         public string Fax { get; set; }
-         public string Email { get; set; }
-         public string Email2 { get; set; }
-         public string Email3 { get; set; }
-         public string Homepage { get; set; }
-         public string Byear { get; set; }
-         public string Ayear { get; set; }
-         public string Address2 { get; set; }
-         public string Phone2 { get; set; }
-         public string Notes { get; set; }
-       
     }
-    
 }
 */

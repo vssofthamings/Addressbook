@@ -26,20 +26,6 @@ namespace WebAddressbookTests
             return this;
         }
 
-        //Список групп
-        public List<GroupData> GetGroupList()
-        {
-            List<GroupData> groups = new List<GroupData>();
-            manager.Navigator.GoTogroupsPage();
-            //Подсчет списка всех элементов "группа". Ищем по тегу SPAN + название GROUP
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
-            foreach (IWebElement element in elements)
-            {
-                groups.Add(new GroupData(element.Text));
-            }
-            return groups;
-        }
-
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoTogroupsPage();
@@ -50,7 +36,6 @@ namespace WebAddressbookTests
             ReturnToGroupsPage();
             return this;
         }
-
 
         public GroupHelper Remove(int p)
         {
@@ -80,6 +65,8 @@ namespace WebAddressbookTests
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            //чистим кэш после изменения
+            groupCache = null;
             return this;
         }
         //Группы. Возврат к списку групп
@@ -98,12 +85,16 @@ namespace WebAddressbookTests
         public GroupHelper RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
+            //чистим кэш после удаления
+            groupCache = null;
             return this;
         }
         //Группы. Подтверждение редактирования групп
         public GroupHelper SubmitGroupModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            //чистим кэш после изменения
+            groupCache = null;
             return this;
         }
         //Группы. Редактирование групп
@@ -111,6 +102,33 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.Name("edit")).Click();
             return this;
+        }
+
+        //Кэш
+        private List<GroupData> groupCache = null;
+
+        //Сравнение списка групп
+        public List<GroupData> GetGroupList()
+        {
+            //Если кэш пустой
+            if (groupCache == null)
+            {
+                groupCache = new List<GroupData>();
+                manager.Navigator.GoTogroupsPage();
+                //Подсчет списка всех элементов "группа". Ищем по тегу SPAN + название GROUP
+                ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+                foreach (IWebElement element in elements)
+                {
+                    groupCache.Add(new GroupData(element.Text));
+                }
+            }
+            //возвращаем копию кэша
+             return new List<GroupData>(groupCache);
+        }
+
+        public int GetGroupCount()
+        {
+            return driver.FindElements(By.CssSelector("span.group")).Count;
         }
     }
 }
