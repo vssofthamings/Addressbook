@@ -8,13 +8,11 @@ namespace WebAddressbookTests
 {
     public class ContactData : IEquatable<ContactData>
     {
-        private string firstname;
-        private string middlename = "";
-        private string lastname = "";
 
-        public ContactData(string firstname)
+        public ContactData(string firstname, string lastname)
         {
-            this.firstname = firstname;
+            Firstname = firstname;
+            Lastname = lastname;
         }
 
         //Сравниваем объекты. Стандартные проверки
@@ -39,39 +37,10 @@ namespace WebAddressbookTests
             return Firstname.GetHashCode();
         }
 
-        public string Firstname
-        {
-            get
-            {
-                return firstname;
-            }
-            set
-            {
-                firstname = value;
-            }
-        }
-        public string Middlename
-        {
-            get
-            {
-                return middlename;
-            }
-            set
-            {
-                middlename = value;
-            }
-        }
-        public string Lastname
-        {
-            get
-            {
-                return lastname;
-            }
-            set
-            {
-                lastname = value;
-            }
-        }
+        public string Firstname { get; set; }
+        public string Middlename { get; set; }
+        public string Lastname { get; set; }
+
     }
 }
 

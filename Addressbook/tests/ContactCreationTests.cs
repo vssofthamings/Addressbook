@@ -14,9 +14,8 @@ namespace WebAddressbookTests
         [Test]
         public void ContactsCreationTest()
         {
-            ContactData contacts = new ContactData("AAA");
+            ContactData contacts = new ContactData("AAA", "CCC");
             contacts.Middlename = "BBB";
-            contacts.Lastname = "CCC";
 
             //Старый список контактов
             List<ContactData> oldContacts = app.Contacts.GetContactList();
@@ -33,9 +32,8 @@ namespace WebAddressbookTests
         [Test]
         public void EmptyContactsCreationTest()
         {
-            ContactData contacts = new ContactData("");
+            ContactData contacts = new ContactData("", "");
             contacts.Middlename = "";
-            contacts.Lastname = "";
 
             //Старый список контактов
             List<ContactData> oldContacts = app.Contacts.GetContactList();
@@ -51,9 +49,8 @@ namespace WebAddressbookTests
         [Test]
         public void BadNameContactsCreationTest()
         {
-            ContactData contacts = new ContactData("a'a");
+            ContactData contacts = new ContactData("a'a", "");
             contacts.Middlename = "";
-            contacts.Lastname = "";
 
             //Старый список контактов
             List<ContactData> oldContacts = app.Contacts.GetContactList();
