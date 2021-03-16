@@ -15,25 +15,29 @@ namespace WebAddressbookTests
             :base(manager)
         {
         }
-        //Логин
+        //Проверка выполнен ли логин
         public void Login(AccountData account)
         {
             if (IsLoggedIn())
             {
+                //Если верная учетка - return
                 if (IsLoggedIn(account))
                 {
                     return;
                 }
+                //если неправильная учетка
                 Logout();
             }
+            //Выполнение логина
             Type(By.Name("user"), account.Username);
             Type(By.Name("pass"), account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
 
-        //Выход. Сначала проверяется не залогинен ли уже и потом выполняется выход
+        //Выход
         public void Logout()
         {
+            //Сначала проверяется не залогинен ли уже и потом выполняется выход
             if (IsLoggedIn())
             {
                 driver.FindElement(By.LinkText("Logout")).Click();
@@ -47,6 +51,7 @@ namespace WebAddressbookTests
         //Проверка имени пользователя, который сейчас в сети
         public bool IsLoggedIn(AccountData account)
         {
+            //юзер залогинен и имя совпадает 
             return IsLoggedIn()
                 && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text 
                 == "(" + account.Username + ")";

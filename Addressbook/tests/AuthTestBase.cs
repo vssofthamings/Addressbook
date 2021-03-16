@@ -9,6 +9,7 @@ namespace WebAddressbookTests
 {
     public class AuthTestBase : TestBase
     {
+        //метод выполняет логин
         [SetUp]
         public void SetupLogin()
         {

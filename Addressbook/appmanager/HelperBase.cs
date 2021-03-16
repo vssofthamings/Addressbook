@@ -27,6 +27,7 @@ namespace WebAddressbookTests
                 driver.FindElement((locator)).SendKeys(text);
             }
         }
+        //Для проверки существует ли элемент
         public bool IsElementPresent(By by)
         {
             try
